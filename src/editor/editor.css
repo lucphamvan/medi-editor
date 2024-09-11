@@ -1,0 +1,12 @@
+.content-editor:focus {
+    outline: none;
+}
+
+.tree-view-output {
+    background-color: rgb(44, 44, 44);
+    font-size: small;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
