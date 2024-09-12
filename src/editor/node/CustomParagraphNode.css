@@ -1,0 +1,21 @@
+.custom-paragraph-node::after {
+  content: attr(
+    data-placeholder
+  ); /* Uses the value of the "data-placeholder" attribute */
+  color: grey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Adjust padding as necessary */
+  pointer-events: none; /* Allows interaction with the underlying element */
+  opacity: 0.5;
+  font-size: small;
+}
+
+/* div:not(:empty)::after {
+  content: ""; 
+} */
+
+.custom-paragraph-node {
+  position: relative;
+}
