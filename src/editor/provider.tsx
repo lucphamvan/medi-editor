@@ -2,7 +2,8 @@ import {
   InitialConfigType,
   LexicalComposer,
 } from "@lexical/react/LexicalComposer";
-import { CustomParagraphNode } from "./node/CustomParagraphNode";
+import { ParagraphWithPlaceholderNode } from "./node/PlaceholderParagraphNode";
+import { MyDecoratorNode } from "./node/decorator-node";
 
 interface ProviderProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ const initialConfig: InitialConfigType = {
   namespace: "MyEditor",
   theme,
   onError,
-  nodes: [CustomParagraphNode],
+  nodes: [ParagraphWithPlaceholderNode, MyDecoratorNode],
 };
 
 const Provider = ({ children }: ProviderProps) => {

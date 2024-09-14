@@ -4,9 +4,9 @@ import {
   NodeKey,
   SerializedParagraphNode,
 } from "lexical";
-import "./CustomParagraphNode.css";
+import "./PlaceholderParagraphNode.css";
 
-export class CustomParagraphNode extends ParagraphNode {
+export class ParagraphWithPlaceholderNode extends ParagraphNode {
   __placeholder: string;
 
   constructor(placeholder: string, key?: NodeKey) {
@@ -34,8 +34,10 @@ export class CustomParagraphNode extends ParagraphNode {
   }
 
   // Override clone method
-  static clone(node: CustomParagraphNode): CustomParagraphNode {
-    return new CustomParagraphNode(node.__placeholder, node.__key);
+  static clone(
+    node: ParagraphWithPlaceholderNode
+  ): ParagraphWithPlaceholderNode {
+    return new ParagraphWithPlaceholderNode(node.__placeholder, node.__key);
   }
 
   // Define the node type
@@ -45,8 +47,8 @@ export class CustomParagraphNode extends ParagraphNode {
 
   static importJSON(
     serializedNode: SerializedParagraphNode
-  ): CustomParagraphNode {
-    return super.importJSON(serializedNode) as CustomParagraphNode;
+  ): ParagraphWithPlaceholderNode {
+    return super.importJSON(serializedNode) as ParagraphWithPlaceholderNode;
   }
 
   exportJSON(): SerializedParagraphNode {

@@ -5,7 +5,7 @@ import Provider from "./editor/provider";
 
 function App() {
   return (
-    <Container maxW="container.md">
+    <Container maxW="container.xl">
       <Provider>
         <Editor />
       </Provider>
