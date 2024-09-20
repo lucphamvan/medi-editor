@@ -5,6 +5,8 @@ import {
 import { ParagraphWithPlaceholderNode } from "./node/PlaceholderParagraphNode";
 import { MyDecoratorNode } from "./node/decorator-node";
 import { EditorThemeClasses } from "lexical";
+import { QuoteNode } from "@lexical/rich-text";
+import { CodeNode } from "@lexical/code";
 
 interface ProviderProps {
 	children: React.ReactNode;
@@ -55,7 +57,7 @@ const initialConfig: InitialConfigType = {
 	namespace: "MyEditor",
 	theme,
 	onError,
-	nodes: [ParagraphWithPlaceholderNode, MyDecoratorNode],
+	nodes: [ParagraphWithPlaceholderNode, MyDecoratorNode, QuoteNode, CodeNode],
 };
 
 const Provider = ({ children }: ProviderProps) => {

@@ -1,17 +1,37 @@
 .content-editor:focus {
-  outline: none;
+	outline: none;
 }
 
 .tree-view-output {
-  background-color: #282c34;
-  font-size: small;
-  color: #abb2bf;
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+	background-color: #282c34;
+	font-size: small;
+	color: #abb2bf;
+	padding: 1rem;
+	border-radius: 4px;
+	margin-bottom: 1rem;
 }
 
 .tree-view-output button {
-  margin-right: 1rem;
-  color: #7bc36e;
+	margin-right: 1rem;
+	color: #7bc36e;
+}
+
+.editor-text-bold {
+	font-weight: bold;
+}
+
+.editor-text-italic {
+	font-style: italic;
+}
+
+.editor-text-underline {
+	text-decoration: underline;
+}
+
+.editor-quote {
+  border-left: 4px solid #575757;
+  padding: 12px;
+	font-style: italic;
+  margin-left: -1rem;
+
 }

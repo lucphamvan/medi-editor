@@ -16,7 +16,6 @@ const Editor = () => {
 			<GridItem>
 				<Stack
 					m="4"
-					// position="relative"
 					fontSize={18}
 					lineHeight="2rem"
 					padding="1rem"

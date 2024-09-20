@@ -1,17 +1,31 @@
-import { Flex, Icon, useDisclosure } from "@chakra-ui/react";
+import { Center, Flex, Icon, useDisclosure } from "@chakra-ui/react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+
 import {
-	TextBoldIcon,
-	TextItalicIcon,
-	TextUnderlineIcon,
-} from "hugeicons-react";
-import { $getSelection, $isRangeSelection } from "lexical";
-import { useEffect, useState } from "react";
+	$createParagraphNode,
+	$getSelection,
+	$isRangeSelection,
+	FORMAT_TEXT_COMMAND,
+	TextFormatType,
+} from "lexical";
+import { $createQuoteNode, $isQuoteNode } from "@lexical/rich-text";
+import { useEffect, useRef, useState } from "react";
+import {
+	MdFormatBold,
+	MdFormatItalic,
+	MdFormatUnderlined,
+	MdFormatQuote,
+} from "react-icons/md";
+import useOutsideClick from "../../hook/useOutSideClick";
+import { $setBlocksType } from "@lexical/selection";
 
 const InLineMenuPlugin = () => {
 	const [editor] = useLexicalComposerContext();
+	const menuRef = useRef<HTMLDivElement>(null);
 	const { isOpen: isShowInlineMenu, onOpen, onClose } = useDisclosure();
 	const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
+
+	useOutsideClick(menuRef, onClose);
 
 	useEffect(() => {
 		const removeUpdateListener = editor.registerUpdateListener(() => {
@@ -25,10 +39,8 @@ const InLineMenuPlugin = () => {
 						onClose();
 					} else {
 						if (rect) {
-							console.log(rect);
-							console.log(selection.getTextContent());
 							setMenuPosition({
-								top: rect.top + window.scrollY - 50, // Position above the text
+								top: rect.bottom + window.scrollY + 2, // Position above the text
 								left:
 									rect.left +
 									window.scrollX +
@@ -43,8 +55,27 @@ const InLineMenuPlugin = () => {
 				}
 			});
 		});
+
 		return () => removeUpdateListener();
 	}, [editor, onOpen, onClose]);
+
+	const formatText = (type: TextFormatType) => {
+		editor.dispatchCommand(FORMAT_TEXT_COMMAND, type);
+	};
+
+	const markAsQuote = () => {
+		editor.update(() => {
+			const selection = $getSelection();
+			if ($isRangeSelection(selection)) {
+				const anchor = selection.anchor.getNode().getParent();
+				if ($isQuoteNode(anchor)) {
+					$setBlocksType(selection, () => $createParagraphNode());
+				} else {
+					$setBlocksType(selection, () => $createQuoteNode());
+				}
+			}
+		});
+	};
 
 	return (
 		<>
@@ -53,35 +84,51 @@ const InLineMenuPlugin = () => {
 					position="absolute"
 					top={`${menuPosition.top}px`}
 					left={`${menuPosition.left}px`}
-					background="white"
-					boxShadow="md"
+					background="gray.800"
 					gap="4"
+					p="2"
 					px="4"
-					py="2"
-					borderRadius="4px"
+					shadow="md"
+					borderRadius="3px"
 					alignItems="center"
+					ref={menuRef}
 				>
-					<Icon
-						cursor="pointer"
-						as={TextBoldIcon}
-						fontSize={15}
-						strokeWidth={2}
-						_hover={{ background: "gray.100" }}
-					/>
-					<Icon
-						cursor="pointer"
-						as={TextItalicIcon}
-						fontSize={15}
-						strokeWidth={2}
-						_hover={{ background: "gray.100" }}
-					/>
-					<Icon
-						cursor="pointer"
-						_hover={{ background: "gray.100" }}
-						as={TextUnderlineIcon}
-						fontSize={15}
-						strokeWidth={2}
-					/>
+					<Center rounded="sm">
+						<Icon
+							cursor="pointer"
+							as={MdFormatBold}
+							fontSize={22}
+							color={"white"}
+							onClick={() => formatText("bold")}
+						/>
+					</Center>
+					<Center rounded="sm">
+						<Icon
+							cursor="pointer"
+							as={MdFormatItalic}
+							fontSize={22}
+							color={"white"}
+							onClick={() => formatText("italic")}
+						/>
+					</Center>
+					<Center rounded="sm">
+						<Icon
+							cursor="pointer"
+							as={MdFormatUnderlined}
+							fontSize={22}
+							color={"white"}
+							onClick={() => formatText("underline")}
+						/>
+					</Center>
+					<Center rounded="sm">
+						<Icon
+							cursor="pointer"
+							as={MdFormatQuote}
+							fontSize={22}
+							color={"white"}
+							onClick={markAsQuote}
+						/>
+					</Center>
 				</Flex>
 			)}
 		</>
