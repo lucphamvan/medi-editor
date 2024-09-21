@@ -16,7 +16,7 @@ import {
   MdFormatUnderlined,
   MdFormatQuote,
 } from "react-icons/md";
-import useOutsideClick from "../../hook/useOutSideClick";
+import useOutsideClick from "../hook/useOutSideClick";
 import { $setBlocksType } from "@lexical/selection";
 
 const Color = {
