@@ -14,9 +14,10 @@ import {
   $getSelection,
   $isRangeSelection,
   createCommand,
+  $isParagraphNode,
 } from "lexical";
 import { useState, useEffect } from "react";
-import { $isHeadNode } from "../node/head-node";
+// import { $isHeadNode } from "../node/head-node";
 
 const WINDOW_SIZE_CHANGE_COMMAND = createCommand("WINDOW_SIZE_CHANGE_COMMAND");
 
@@ -59,7 +60,7 @@ const ActionMenuPlugin = () => {
         // Check if the node is a text node and if it's empty
         if (
           selectionNode.getTextContent() === "" &&
-          !$isHeadNode(selectionNode)
+          $isParagraphNode(selectionNode)
         ) {
           setIsEmptyNode(true);
           setRect(rect);

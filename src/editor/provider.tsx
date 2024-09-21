@@ -6,7 +6,7 @@ import { ParagraphWithPlaceholderNode } from "./node/paragraph-placeholder-node"
 import { MyDecoratorNode } from "./node/decorator-node";
 import { EditorThemeClasses } from "lexical";
 import { QuoteNode } from "@lexical/rich-text";
-import { CodeNode } from "@lexical/code";
+import { CodeNode, CodeHighlightNode } from "@lexical/code";
 import { HeadNode } from "./node/head-node";
 
 interface ProviderProps {
@@ -52,6 +52,38 @@ const theme: EditorThemeClasses = {
     underline: "editor-text-underline",
     underlineStrikethrough: "editor-text-underlineStrikethrough",
   },
+  codeHighlight: {
+    atrule: "PlaygroundEditorTheme__tokenAttr",
+    attr: "PlaygroundEditorTheme__tokenAttr",
+    boolean: "PlaygroundEditorTheme__tokenProperty",
+    builtin: "PlaygroundEditorTheme__tokenSelector",
+    cdata: "PlaygroundEditorTheme__tokenComment",
+    char: "PlaygroundEditorTheme__tokenSelector",
+    class: "PlaygroundEditorTheme__tokenFunction",
+    "class-name": "PlaygroundEditorTheme__tokenFunction",
+    comment: "PlaygroundEditorTheme__tokenComment",
+    constant: "PlaygroundEditorTheme__tokenProperty",
+    deleted: "PlaygroundEditorTheme__tokenProperty",
+    doctype: "PlaygroundEditorTheme__tokenComment",
+    entity: "PlaygroundEditorTheme__tokenOperator",
+    function: "PlaygroundEditorTheme__tokenFunction",
+    important: "PlaygroundEditorTheme__tokenVariable",
+    inserted: "PlaygroundEditorTheme__tokenSelector",
+    keyword: "PlaygroundEditorTheme__tokenAttr",
+    namespace: "PlaygroundEditorTheme__tokenVariable",
+    number: "PlaygroundEditorTheme__tokenProperty",
+    operator: "PlaygroundEditorTheme__tokenOperator",
+    prolog: "PlaygroundEditorTheme__tokenComment",
+    property: "PlaygroundEditorTheme__tokenProperty",
+    punctuation: "PlaygroundEditorTheme__tokenPunctuation",
+    regex: "PlaygroundEditorTheme__tokenVariable",
+    selector: "PlaygroundEditorTheme__tokenSelector",
+    string: "PlaygroundEditorTheme__tokenSelector",
+    symbol: "PlaygroundEditorTheme__tokenProperty",
+    tag: "PlaygroundEditorTheme__tokenProperty",
+    url: "PlaygroundEditorTheme__tokenOperator",
+    variable: "PlaygroundEditorTheme__tokenVariable",
+  },
 };
 
 const initialConfig: InitialConfigType = {
@@ -64,6 +96,7 @@ const initialConfig: InitialConfigType = {
     QuoteNode,
     CodeNode,
     HeadNode,
+    CodeHighlightNode,
   ],
 };
 

@@ -10,6 +10,7 @@ import ActionMenuPlugin from "./plugins/action-menu-plugin";
 import { StateManagementPlugin } from "./plugins/state-management-plugin";
 import InlineMenuPlugin from "./plugins/inline-menu-plugin";
 import FirstHeadingPlugin from "./plugins/first-heading-plugin";
+import HighlightCodePlugin from "./plugins/highlight-code-plugin";
 
 interface EditorProps {
   developMode?: boolean;
@@ -49,6 +50,7 @@ const Editor = ({ developMode = false }: EditorProps) => {
           <InlineMenuPlugin />
           <ActionMenuPlugin />
           <FirstHeadingPlugin />
+          <HighlightCodePlugin />
         </Stack>
       </GridItem>
       {developMode && (
