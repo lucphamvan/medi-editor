@@ -26,7 +26,7 @@ function Divider() {
   return <div className="divider" />;
 }
 
-export default function ToolbarPlugin() {
+const ToolbarPlugin = () => {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
@@ -180,4 +180,6 @@ export default function ToolbarPlugin() {
       </button>
     </div>
   );
-}
+};
+
+export default ToolbarPlugin;

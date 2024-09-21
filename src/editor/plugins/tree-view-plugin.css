@@ -1,0 +1,13 @@
+.tree-view-output {
+  background-color: #282c34;
+  font-size: small;
+  color: #abb2bf;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.tree-view-output button {
+  margin-right: 1rem;
+  color: #7bc36e;
+}

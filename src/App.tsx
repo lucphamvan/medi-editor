@@ -1,14 +1,14 @@
 import { Container } from "@chakra-ui/react";
 import "./App.css";
 import Editor from "./editor";
-import Provider from "./editor/provider";
+import LexicalProvider from "./editor/provider";
 
 function App() {
   return (
     <Container maxW="container.xl">
-      <Provider>
+      <LexicalProvider>
         <Editor />
-      </Provider>
+      </LexicalProvider>
     </Container>
   );
 }

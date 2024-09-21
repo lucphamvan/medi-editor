@@ -1,4 +1,4 @@
-.custom-paragraph-node::after {
+.paragraph-placeholder-node::after {
   content: attr(
     data-placeholder
   ); /* Uses the value of the "data-placeholder" attribute */
@@ -16,6 +16,6 @@
   content: ""; 
 } */
 
-.custom-paragraph-node {
+.paragraph-placeholder-node {
   position: relative;
 }
